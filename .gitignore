@@ -9,3 +9,6 @@ coverage
 
 # build
 /dist
+
+# DB Migration
+/drizzle
