@@ -2,6 +2,8 @@ import fastify from 'fastify';
 import cors from '@fastify/cors';
 import multipart from '@fastify/multipart';
 import healthCheckRoute from './routes/health-check.route';
+import userRoutes from './routes/user.route';
+import authRoutes from './routes/auth.route';
 
 const server = fastify({ logger: true });
 
@@ -12,7 +14,10 @@ server.register(cors, {
 
 server.register(multipart);
 
+// Register routes
 server.register(healthCheckRoute, { prefix: '/api/v1' });
+server.register(authRoutes, { prefix: '/api/v1' });
+server.register(userRoutes, { prefix: '/api/v1' });
 
 // Start the server
 async function start(): Promise<void> {
